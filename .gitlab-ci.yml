@@ -1,0 +1,21 @@
+image: oven/bun:alpine
+cache:
+  paths:
+    - node_modules/
+stages:
+  - test
+test:
+  stage: test
+  before_script:
+    - apk update && apk add git python3 nodejs npm
+    - bun install
+  script:
+    - bun run test-report
+  artifacts:
+    when: always
+    paths:
+      - report.html
+      - report.json
+      - report.xml
+    reports:
+      junit: report.xml

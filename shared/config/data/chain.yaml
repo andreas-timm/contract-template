@@ -1,0 +1,6 @@
+chain:
+  ganache:
+    rpc:
+      - http://localhost:8545
+  maticmum:
+    transportProvider: ''

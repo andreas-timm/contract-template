@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "paths": {
+            "@core/*": ["./core/*"],
+            "@test/*": ["./test/*"],
+            "@artifacts/*": ["./artifacts/*"],
+            "@shared/*": ["./shared/*"],
+            "@libs/*": ["./libs/*"]
+        }
+    },
+}
