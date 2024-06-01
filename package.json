@@ -19,14 +19,14 @@
         "@types/convict": "^6.1.6",
         "@types/js-yaml": "^4.0.9",
         "@types/keccak": "^3.0.4",
-        "@types/node": "^20.12.13",
         "chai": "^4.4.1",
+        "@types/node": "^20.13.0",
         "chai-bn": "^0.3.1",
         "chai-string": "^1.5.0",
         "console-table-printer": "^2.12.0",
         "cucumber-tsflow": "^4.4.4",
         "deepmerge": "^4.3.1",
-        "eslint": "^9.3.0",
+        "eslint": "^9.4.0",
         "expr-eval": "^2.0.2",
         "hardhat": "^2.22.4",
         "hardhat-contract-sizer": "^2.10.0",
@@ -39,7 +39,7 @@
         "ts-json-schema-generator": "2.0.1",
         "ts-node": "^10.9.2",
         "tsconfig-paths": "^4.2.0",
-        "viem": "^2.13.1"
+        "viem": "^2.13.3"
     },
     "devDependencies": {
         "bun-copy-plugin": "^0.2.1",
