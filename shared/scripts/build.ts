@@ -6,13 +6,14 @@ async function build() {
     await copyDirectory('./contracts', 'dist/contracts')
     await copyDirectory('./features', 'dist/features')
     await copyDirectory('./libs', 'dist/libs')
+    await copyDirectory('./shared/config', 'dist/shared/config')
     await copyFile('README_package.md', 'dist/README.md')
 
     const files: readonly Dirent[] = await readdir('.', { withFileTypes: true })
 
     for (const file of files) {
         if (file.isFile()) {
-            if (['bun.lockb', 'package.json', 'README_package.md'].indexOf(file.name) > -1) {
+            if (['package.json', 'README.md', 'README_package.md'].indexOf(file.name) > -1) {
                 continue
             }
             await copyFile(file.name, `dist/${file.name}`)
@@ -22,15 +23,21 @@ async function build() {
 
 async function processPackageJson() {
     const gv: Record<string, any> = await Bun.readableStreamToJSON(Bun.spawn(['gitversion']).stdout)
+    const packageData = await Bun.file('package.json').json()
+    const packageDist = {
+        name: packageData.name,
+        version: `${gv.SemVer}-${gv.ShortSha}`,
+        scripts: ['hardhat:test', 'cucumber:hardhat', 'test'].reduce((acc: Record<string, any>, key) => {
+            acc[key] = packageData.scripts[key]
+            return acc
+        }, {}),
+        dependencies: packageData.dependencies,
+    }
 
-    let packageData = await Bun.file('package.json').json()
-    delete packageData['files']
-    delete packageData['devDependencies']
-    packageData.version = `${gv.SemVer}-${gv.ShortSha}`
-    packageData['scripts'] = {}
-    // packageData['module'] = 'index.js'
-
-    await fs.writeFile('dist/package.json', JSON.stringify(packageData, null, 4))
+    await fs.writeFile('dist/package.json', JSON.stringify(packageDist, null, 4))
+    await copyDirectory('./node_modules', 'dist/node_modules')
+    await shell(['bun', 'install'], 'dist')
+    await fs.rm('dist/node_modules', { recursive: true, force: true })
 }
 
 async function prepare() {
