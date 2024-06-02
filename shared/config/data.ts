@@ -5,7 +5,7 @@ interface ChainCollection {
 
 export type ChainCollectionKeys = keyof ChainCollection
 
-export type ContractChain = ChainCollectionKeys | 'polygonZkTestnet' | 'polygonZk' | 'scrollSepolia'
+export type ContractChain = ChainCollectionKeys | 'scrollSepolia'
 
 interface Chain {
     rpc?: string[]
