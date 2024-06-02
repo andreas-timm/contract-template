@@ -7,7 +7,9 @@ async function build() {
     await copyDirectory('./features', 'dist/features')
     await copyDirectory('./libs', 'dist/libs')
     await copyFile('README_package.md', 'dist/README.md')
+
     const files: readonly Dirent[] = await readdir('.', { withFileTypes: true })
+
     for (const file of files) {
         if (file.isFile()) {
             if (['bun.lockb', 'package.json', 'README_package.md'].indexOf(file.name) > -1) {
@@ -39,8 +41,8 @@ async function clear() {
     await fs.rm('dist', { recursive: true, force: true })
 }
 
-async function shell(args: string[]) {
-    await new Response(Bun.spawn(args, { stdout: 'inherit' }).stdout).arrayBuffer()
+async function shell(args: string[], cwd?: string) {
+    await new Response(Bun.spawn(args, { stdout: 'inherit', cwd }).stdout).arrayBuffer()
 }
 
 const main = async () => {
