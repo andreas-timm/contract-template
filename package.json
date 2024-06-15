@@ -5,7 +5,9 @@
         "hardhat:test": "hardhat test",
         "cucumber:hardhat": "NODE_OPTIONS='--experimental-loader ts-node/esm/transpile-only --no-warnings=ExperimentalWarning' hardhat run --network hardhat ./node_modules/.bin/cucumber-js",
         "test": "bun run cucumber:hardhat",
-        "build": "bun run shared/scripts/build.ts"
+        "build": "bun run shared/scripts/build.ts",
+        "update-packages": "ncu -u && bun install",
+        "removeConfigCache": "rm -rf ./node_modules/.cache/config/data.json"
     },
     "dependencies": {
         "@cucumber/cucumber": "^10.8.0",

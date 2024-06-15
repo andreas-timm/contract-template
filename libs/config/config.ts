@@ -5,10 +5,10 @@ import Ajv from 'ajv'
 import * as tsj from 'ts-json-schema-generator'
 import path from 'node:path'
 import deepmerge from 'deepmerge'
-import { Config } from './data'
+import { Config } from './types'
 
-const DEFAULT_CONFIG_PATH = 'config.yaml'
-const DEFAULT_INTERFACE_PATH = 'shared/config/data.ts'
+const DEFAULT_CONFIG_PATH = 'config/index.yaml'
+const DEFAULT_TYPES_PATH = 'libs/config/types.ts'
 const DEFAULT_CACHE_DIR = 'node_modules/.cache/config'
 const DEFAULT_CACHE_SCHEMA_PATH = `${DEFAULT_CACHE_DIR}/schema.json`
 const DEFAULT_TSCONFIG_PATH = 'tsconfig.json'
@@ -44,19 +44,19 @@ function writeToCache(cachePath: string, data: Record<string, any>, configDMDate
 function getSchema(/*data: any*/) {
     let schema: any
 
-    let cached = getCached(DEFAULT_CACHE_SCHEMA_PATH, statSync(DEFAULT_INTERFACE_PATH).mtimeMs)
+    let cached = getCached(DEFAULT_CACHE_SCHEMA_PATH, statSync(DEFAULT_TYPES_PATH).mtimeMs)
     if (cached !== null) {
         return cached as Config satisfies Config
     }
 
     const config = {
-        path: DEFAULT_INTERFACE_PATH,
+        path: DEFAULT_TYPES_PATH,
         tsconfig: DEFAULT_TSCONFIG_PATH,
         type: 'Config',
     }
     schema = tsj.createGenerator(config).createSchema(config.type)
 
-    writeToCache(DEFAULT_CACHE_SCHEMA_PATH, schema, new Date(statSync(DEFAULT_INTERFACE_PATH).mtimeMs))
+    writeToCache(DEFAULT_CACHE_SCHEMA_PATH, schema, new Date(statSync(DEFAULT_TYPES_PATH).mtimeMs))
 
     return schema
 }

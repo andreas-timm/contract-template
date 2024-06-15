@@ -6,7 +6,6 @@ async function build() {
     await copyDirectory('./contracts', 'dist/contracts')
     await copyDirectory('./features', 'dist/features')
     await copyDirectory('./libs', 'dist/libs')
-    await copyDirectory('./shared/config', 'dist/shared/config')
     await copyFile('README_package.md', 'dist/README.md')
 
     const files: readonly Dirent[] = await readdir('.', { withFileTypes: true })

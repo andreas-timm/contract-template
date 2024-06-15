@@ -1,0 +1,12 @@
+contract:
+  deployed_config_path:
+    default: config/contract/deployed.yaml
+    chain:
+      ganache: &ganache tmp/deployed_ganache.yaml
+config:
+  added:
+    - config/contract/deployed.yaml
+    - *ganache
+    - config/contract/abi.yaml
+    - config/chain.yaml
+    - local.yaml

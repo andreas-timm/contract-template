@@ -27,7 +27,7 @@ export type WorldHardhat = {
 
 export type IWorkspace = {
     init: (/*options?: ConfigOptions*/) => void
-    deploy: (name: string, account: string, alias: string, args: any[]) => Promise<ContractData>
+    deploy: (name: number | string, account: string, alias: string, args: any[]) => Promise<ContractData>
     read: (
         contract: GetContractReturnType,
         functionName: string,

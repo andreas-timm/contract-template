@@ -33,11 +33,11 @@ import path from 'node:path'
 import { existsSync, readFileSync } from 'node:fs'
 chai.use(chaiString)
 chai.use(chaiBn(BN))
-import { getConfig, Config } from '@shared/config'
+import { getConfig, Config } from '@libs/config'
 import fs from 'fs'
 import yaml from 'js-yaml'
 // import SourceMap from 'js-yaml-source-map'
-import { ContractChain } from '@shared/config/data'
+import { ContractChain } from '@libs/config/types'
 
 export const UINT32_DISCRETION: number = 4294967295
 

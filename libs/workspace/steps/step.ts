@@ -8,9 +8,9 @@ import { Workspace } from '../index'
 export class Step {
     constructor(protected workspace: Workspace) {}
 
-    @given('test')
-    async test() {
-        console.log('test')
+    @given('init')
+    async init() {
+        await this.workspace.init()
     }
 
     @given('{int}: deployed {word} as {word}')
@@ -25,7 +25,7 @@ export class Step {
             contractData = await this.workspace.deploy(account, name, alias)
             await this.workspace.saveDeployed(alias, contractData.address)
         }
-        console.log('contractData', contractData.address)
+        // console.log('contractData', contractData.address)
     }
 
     // @given('{int}: deployed {word} bytecode as {word}')

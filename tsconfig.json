@@ -16,4 +16,5 @@
             "@libs/*": ["./libs/*"]
         }
     },
+    "include": ["hardhat.config.ts", "libs/**/*"]
 }

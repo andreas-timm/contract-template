@@ -1,2 +1,2 @@
-export { Config } from './data'
+export { Config } from './types'
 export { getConfig } from './config'
