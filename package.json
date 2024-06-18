@@ -1,6 +1,31 @@
 {
     "name": "@andreas-timm/dev-contract-template",
     "version": "0.1.0",
+    "description": "Contract (EVM) development and maintain system template.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/andreas-timm/contract-template.git"
+    },
+    "keywords": [
+        "config",
+        "typescript",
+        "gherkin",
+        "cucumber",
+        "dev",
+        "solidity",
+        "cucumber-js",
+        "bun",
+        "hardhat",
+        "solidity-coverage",
+        "viem",
+        "cucumber-tsflow"
+    ],
+    "author": "Andreas Timm <info@andreas-timm.dev>",
+    "license": "CC-BY-4.0",
+    "bugs": {
+        "url": "https://github.com/andreas-timm/contract-template/issues"
+    },
+    "homepage": "https://github.com/andreas-timm/contract-template#readme",
     "scripts": {
         "hardhat:test": "hardhat test",
         "cucumber:hardhat": "NODE_OPTIONS='--experimental-loader ts-node/esm/transpile-only --no-warnings=ExperimentalWarning' hardhat run --network hardhat ./node_modules/.bin/cucumber-js",

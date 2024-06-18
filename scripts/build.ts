@@ -26,6 +26,13 @@ async function processPackageJson() {
     const packageDist = {
         name: packageData.name,
         version: `${gv.SemVer}-${gv.ShortSha}`,
+        description: packageData.description,
+        repository: packageData.repository,
+        license: packageData.license,
+        author: packageData.author,
+        keywords: packageData.keywords,
+        bugs: packageData.bugs,
+        homepage: packageData.homepage,
         scripts: ['hardhat:test', 'cucumber:hardhat', 'test'].reduce((acc: Record<string, any>, key) => {
             acc[key] = packageData.scripts[key]
             return acc
