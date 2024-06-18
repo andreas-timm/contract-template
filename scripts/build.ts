@@ -24,7 +24,7 @@ async function processPackageJson() {
     const gv: Record<string, any> = await Bun.readableStreamToJSON(Bun.spawn(['gitversion']).stdout)
     const packageData = await Bun.file('package.json').json()
     const packageDist = {
-        name: packageData.name,
+        name: packageData.name.replace(/(@\S+\/)(\S+)/, '$1create-$2'),
         version: `${gv.SemVer}-${gv.ShortSha}`,
         description: packageData.description,
         repository: packageData.repository,

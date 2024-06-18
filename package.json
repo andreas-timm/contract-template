@@ -1,5 +1,5 @@
 {
-    "name": "@andreas-timm/dev-contract-template",
+    "name": "@andreas-timm/contract-template",
     "version": "0.1.0",
     "description": "Contract (EVM) development and maintain system template.",
     "repository": {
