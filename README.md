@@ -2,6 +2,12 @@
 
 [![test](https://github.com/andreas-timm/dev-contract-template/actions/workflows/test.yml/badge.svg)](https://github.com/andreas-timm/dev-contract-template/actions/workflows/test.yml)
 
+## Create a contract development project with this template
+```bash
+bun create @andreas-timm/contract-template [<destination>]
+```
+- Documentation: [Bun Templating](https://bun.sh/docs/cli/bun-create)
+
 ## Tech stack:
 - Bun
 - Viem
@@ -10,13 +16,14 @@
 
 ## Features
 - Typed config
+- Gherkin tests workspace on viem
+- Deployment
+- Management
 
-## Template development
-### Dependencies
-    bun install
-
-### Test
-    bun run test
+## Test
+```bash
+bun run test
+```
 
 ## License
 [![CC BY 4.0][cc-by-shield]][cc-by]

@@ -6,13 +6,13 @@ async function build() {
     await copyDirectory('./contracts', 'dist/contracts')
     await copyDirectory('./features', 'dist/features')
     await copyDirectory('./libs', 'dist/libs')
-    await copyFile('README_package.md', 'dist/README.md')
+    await copyFile('README_template.md', 'dist/README.md')
 
     const files: readonly Dirent[] = await readdir('.', { withFileTypes: true })
 
     for (const file of files) {
         if (file.isFile()) {
-            if (['package.json', 'README.md', 'README_package.md'].indexOf(file.name) > -1) {
+            if (['package.json', 'README.md', 'README_template.md'].indexOf(file.name) > -1) {
                 continue
             }
             await copyFile(file.name, `dist/${file.name}`)
