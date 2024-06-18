@@ -26,6 +26,10 @@
         "url": "https://github.com/andreas-timm/contract-template/issues"
     },
     "homepage": "https://github.com/andreas-timm/contract-template#readme",
+    "bin": {
+        "@andreas-timm/create-contract-template": "./index.js",
+        "@andreas-timm/contract-template": "./index.js"
+    },
     "scripts": {
         "hardhat:test": "hardhat test",
         "cucumber:hardhat": "NODE_OPTIONS='--experimental-loader ts-node/esm/transpile-only --no-warnings=ExperimentalWarning' hardhat run --network hardhat ./node_modules/.bin/cucumber-js",
