@@ -1,6 +1,6 @@
 const otp = Bun.spawnSync(['oathtool', '--totp', '-b', Bun.env.TOTP_SEED!]).stdout.toString()
 
-const publishProc = Bun.spawnSync(['npm', 'publish', '--access', 'restricted', '--otp', otp], {
+const publishProc = Bun.spawnSync(['npm', 'publish', '--access', 'public', '--otp', otp], {
     env: Bun.env,
     cwd: 'dist',
 })

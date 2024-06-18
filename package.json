@@ -31,6 +31,7 @@
         "cucumber:hardhat": "NODE_OPTIONS='--experimental-loader ts-node/esm/transpile-only --no-warnings=ExperimentalWarning' hardhat run --network hardhat ./node_modules/.bin/cucumber-js",
         "test": "bun run cucumber:hardhat",
         "build": "bun run scripts/build.ts",
+        "publish": "bun run scripts/publish.ts",
         "update-packages": "ncu -u && bun install",
         "removeConfigCache": "rm -rf ./node_modules/.cache/config/data.json"
     },
